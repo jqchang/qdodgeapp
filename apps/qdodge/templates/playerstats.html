@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Player Stats</title>
+    {%load static%}
+    <link rel='stylesheet' type='text/css' href="{%static 'main.css'%}"/>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <th>Name</th>
+        <th>summonerId</th>
+        <th>accountId</th>
+        <th># games</th>
+        <th>debug</th>
+      </thead>
+      <tbody>
+        {%for key,val in players.items%}
+        <tr>
+          <td>{{key}}</td>
+          <td>{{val.id}}</td>
+          <td>{{val.accountId}}</td>
+          <td>{{val.numRanked}}</td>
+          <td>{{val}}</td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </ul>
+  </body>
+</html>
