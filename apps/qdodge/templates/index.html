@@ -4,20 +4,36 @@
     <meta charset="utf-8">
     <title>Queue Dodger</title>
     {%load static%}
-    <link rel='stylesheet' type='text/css' ref="{%static 'main.css'%}"/>
+    <link rel='stylesheet' type='text/css' href="{%static 'main.css'%}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{%static 'laneparse.js'%}"></script>
   </head>
   <body>
-    <form action='dodge' method='post'>
-      {%csrf_token%}
-      <table>
-        <tbody>
-          <tr>
-            <td>Paste your chat log:</td>
-            <td><textarea name='chat'></textarea></td>
-          </tr>
-        </tbody>
-      </table>
-      <input type='submit'>
-    </form>
+    Paste your chat log:<br>
+    <textarea id='chatlog'></textarea><br>
+    <button id='parse'>Assign Lanes!</button>
+    <button id='reset'>Reset</button><br><br>
+    Lane Assignments:
+    <form action='dodge' method='POST'>
+    <table>
+        {%csrf_token%}
+        {%for i in '12345'%}
+        <tr>
+          <td>Summoner {{i}}</td>
+          <td>
+            <select id='lane{{i}}' name='lane{{i}}'>
+              <option>Top</option>
+              <option>Jungle</option>
+              <option>Mid</option>
+              <option>ADC</option>
+              <option>Support</option>
+            </select>
+          </td>
+          <td><input type='text' id='summoner{{i}}' name='summoner{{i}}'></td>
+        </tr>
+        {%endfor%}
+    </table>
+    <input type='submit'>
+  </form>
   </body>
 </html>

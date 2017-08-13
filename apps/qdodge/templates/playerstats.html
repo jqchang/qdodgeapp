@@ -9,23 +9,26 @@
   <body>
     <table>
       <thead>
+        <th>Lane</th>
         <th>Name</th>
         <th>summonerId</th>
         <th>accountId</th>
-        <th># games</th>
-        <th>debug</th>
+        <th>games this season</th>
+        <!-- <th>debug</th> -->
       </thead>
       <tbody>
-        {%for key,val in players.items%}
+        {%for key,val in lanes.items%}
         <tr>
           <td>{{key}}</td>
+          <td>{{val.name}}</td>
           <td>{{val.id}}</td>
           <td>{{val.accountId}}</td>
-          <td>{{val.numRanked}}</td>
-          <td>{{val}}</td>
+          <td>{{val.matches.matches|length}}</td>
+          <!-- <td>{{val}}</td> -->
         </tr>
         {%endfor%}
       </tbody>
     </ul>
+    {{X}}
   </body>
 </html>
